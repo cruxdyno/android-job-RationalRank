@@ -76,8 +76,8 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.devv911'
-                artifactId = 'evernote-job'
+                groupId = 'com.github.cruxdyno'
+                artifactId = 'android-job-RationalRank'
             }
         }
     }
