@@ -1,7 +1,29 @@
-apply plugin: 'com.vanniktech.maven.publish'
+//apply plugin: 'com.vanniktech.maven.publish'
 
 //plugins.withId("com.vanniktech.maven.publish") {
 //    mavenPublish {
 //        sonatypeHost = "S01"
 //    }
 //}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = "sources"
+}
+
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        debug(MavenPublication) {
+            groupId = 'com.github.cruxdyno'
+            artifactId = 'android-job-RationalRank'
+            version = '1.4.3-bug600-jitpack'
+
+            artifact sourceJar
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
